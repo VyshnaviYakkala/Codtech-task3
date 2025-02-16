@@ -1,0 +1,41 @@
+A Kubernetes Deployment is a resource object that manages the deployment and scaling of a set of Pods in a Kubernetes cluster. It ensures that a specified number of replicas of an application are running and can automatically roll out updates.
+
+Key Features of Kubernetes Deployment
+
+Self-healing: Automatically replaces failed pods.
+
+Scaling: Can scale up or down using kubectl scale.
+
+Rolling Updates: Allows updating applications without downtime.
+
+Rollback: Can revert to previous versions if needed.
+
+
+
+---
+
+How to Create a Deployment
+
+A Deployment is typically defined in a YAML file.
+
+Example Deployment YAML
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas: 3  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app-container
+          image: nginx:
